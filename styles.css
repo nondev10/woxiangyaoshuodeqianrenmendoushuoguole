@@ -1,0 +1,71 @@
+#attract {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('./image/angel.png');
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 91vh;
+}
+
+#guidance {
+    color: gold;
+    font-weight: bold;
+    font-size: 10vh;
+    text-shadow: 5px 0 #000,
+	-5px 0 #000,
+	0 5px #000,
+	0 -5px #000,
+	5px 5px #000,
+	-5px -5px #000,
+	5px -5px #000,
+	-5px 5px #000;
+}
+
+/* 图片飞舞样式 */
+.flying-image {
+    position: fixed;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* 突脸消失动画 */
+@keyframes zoom-face {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    80% { transform: translate(-50%, -50%) scale(10); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(10); opacity: 0; }
+}
+
+.zoom-face {
+    animation: zoom-face 0.5s forwards;
+}
+
+/* 横穿动画 */
+@keyframes fly-horizontal {
+    0% { transform: translateX(var(--start-x)) rotate(var(--start-rotate)); }
+    100% { transform: translateX(var(--end-x)) rotate(var(--end-rotate)); }
+}
+
+.fly-horizontal {
+    animation: fly-horizontal linear forwards;
+}
+
+/* 螺旋上下动画 */
+@keyframes fly-vertical-spiral {
+    0% { transform: translateY(var(--start-y)) rotate(0deg); }
+    50% { transform: translateY(var(--end-y)) rotate(540deg); }
+    100% { transform: translateY(var(--start-y)) rotate(0deg); }
+}
+
+.fly-vertical-spiral {
+    animation: fly-vertical-spiral linear forwards;
+}
